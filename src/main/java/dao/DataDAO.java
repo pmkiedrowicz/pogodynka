@@ -1,4 +1,5 @@
 package dao;
+
 import dto.Data;
 
 import java.sql.*;
@@ -12,7 +13,7 @@ public class DataDAO {
     private static final String HUMIDITY = "Humidity";
     private static final String DATE = "DateTime";
 
-    private static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/pogodynka?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    //    private static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/pogodynka?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String insertQuery = "INSERT INTO data (Temperature,Humidity,DateTime)VALUES(?,?,?)";
 
     private String login;
@@ -23,7 +24,7 @@ public class DataDAO {
         this.password = password;
     }
 
-    public List<Data> getAll() {
+    public List<Data> getAll(String CONNECTION_STRING) {
         List<Data> result = new ArrayList<>();
         try {
             try (Connection con = DriverManager.getConnection(CONNECTION_STRING, login, password)) {
@@ -48,7 +49,57 @@ public class DataDAO {
         return result;
     }
 
-    public Integer insert(Data data) {
+    public List<Data> getRecent7Days(String CONNECTION_STRING) {
+        List<Data> result = new ArrayList<>();
+        try {
+            try (Connection con = DriverManager.getConnection(CONNECTION_STRING, login, password)) {
+                try (Statement statement = con.createStatement()) {
+                    String tableSql = "SELECT * FROM DATA WHERE DateTime >= DATE(NOW()) - INTERVAL 7 DAY";
+                    try (ResultSet resultSet = statement.executeQuery(tableSql)) {
+                        while (resultSet.next()) {
+                            Data data = Data.builder()
+                                    .id(resultSet.getInt("id"))
+                                    .temperature(resultSet.getDouble("temperature"))
+                                    .humidity(resultSet.getDouble("humidity"))
+                                    .dateTime(resultSet.getDate(DATE).toLocalDate())
+                                    .build();
+                            result.add(data);
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<Data> getRecentRecord(String CONNECTION_STRING) {
+        List<Data> result = new ArrayList<>();
+        try {
+            try (Connection con = DriverManager.getConnection(CONNECTION_STRING, login, password)) {
+                try (Statement statement = con.createStatement()) {
+                    String tableSql = "SELECT * FROM DATA WHERE id=(SELECT MAX(id) FROM DATA)";
+                    try (ResultSet resultSet = statement.executeQuery(tableSql)) {
+                        while (resultSet.next()) {
+                            Data data = Data.builder()
+                                    .id(resultSet.getInt("id"))
+                                    .temperature(resultSet.getDouble("temperature"))
+                                    .humidity(resultSet.getDouble("humidity"))
+                                    .dateTime(resultSet.getDate(DATE).toLocalDate())
+                                    .build();
+                            result.add(data);
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Integer insert(Data data, String CONNECTION_STRING) {
         Integer result = null;
         try {
             try (Connection con = DriverManager.getConnection(CONNECTION_STRING, login, password)) {
