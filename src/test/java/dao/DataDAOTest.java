@@ -1,9 +1,14 @@
 package dao;
 
 import dto.Data;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.Month;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class DataDAOTest {
     String login = "root";
@@ -17,15 +22,17 @@ public class DataDAOTest {
 
     @Test
     public void insert() {
-        dataDAO.insert(data);
+//        dataDAO.insert(data);
+//        Assert.assertEquals(dataDAO.getRecentRecord(), dataDAO.insert(data));
     }
 
     @Test
     public void getAll() {
+//        dataDAO.deleteRecords();
 //        List<Data> expected = new ArrayList<>();
 //        expected.add(data);
+//        dataDAO.insert(data);
 //        List<Data> result = new DataDAO(login, password, database).getAll();
-//        result.forEach(data -> System.out.println(data));
 //        Assert.assertEquals(expected, result);
     }
 

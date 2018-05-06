@@ -36,17 +36,17 @@ public class Main {
         Data newData = new Data(temp, humi, localDateTime);
         new DataDAO(login, password,database).insert(newData);
 
-//        System.out.println("it gets all");
-//        List<Data> result = new DataDAO(login, password,database).getAll();
-//        result.forEach(data -> System.out.println(data));
+        System.out.println("it gets all");
+        List<Data> result = new DataDAO(login, password,database).getAll();
+        result.forEach(data -> System.out.println(data));
 //        System.out.println("7days");
 //        List<Data> result2 = new DataDAO(login, password,database).getRecent7Days();
 //        result2.forEach(data -> System.out.println(data));
 //        System.out.println("recent record");
 
 
-        Boolean result3 = new DataDAO(login, password, databaseTest).deleteRecords();
-        System.out.println(result3);
+//        Boolean result3 = new DataDAO(login, password, databaseTest).deleteRecords();
+//        System.out.println(result3);
 
 
     }
