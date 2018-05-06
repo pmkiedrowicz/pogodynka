@@ -47,6 +47,7 @@ public class DataDAO {
                         }
                     }
                 }
+                con.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,6 +73,7 @@ public class DataDAO {
                         }
                     }
                 }
+                con.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,6 +99,7 @@ public class DataDAO {
                         }
                     }
                 }
+            con.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -120,11 +123,29 @@ public class DataDAO {
                     }
                     data.setId(result);
                 }
-            }
+            con.close();}
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
 
+    }
+
+    public Boolean deleteRecords() {
+        Boolean result = false;
+        try {
+            try (Connection con = DriverManager.getConnection(connectionString, login, password)) {
+                String tableSql = "TRUNCATE TABLE data";
+                try (Statement statement = con.createStatement()) {
+
+                    result=statement.execute(tableSql);
+                }
+            con.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

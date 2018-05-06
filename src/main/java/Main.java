@@ -14,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         String database = "pogodynka";
+        String databaseTest="pogodynkaTest";
         //        port(8080);
 //        get("/hello", (req, res) -> "Hello World");
 //        // http://localhost:8080/sensor?temperature=22.4&humidity=33
@@ -31,16 +32,19 @@ public class Main {
         System.out.print("Podaj hasło: ");
         String password = scanner.next();
 
-        Data newData = new Data(temp, humi, data2);
-        new DataDAO(login, password,database).insert(newData);
+//        Data newData = new Data(temp, humi, data2);
+//        new DataDAO(login, password,database).insert(newData);
 
-        List<Data> result = new DataDAO(login, password,database).getAll();
-        result.forEach(data -> System.out.println(data));
-        System.out.println("7days");
-        List<Data> result2 = new DataDAO(login, password,database).getRecent7Days();
-        result2.forEach(data -> System.out.println(data));
-        System.out.println("recent record");
-        List<Data> result3 = new DataDAO(login, password,database).getRecentRecord();
-        result3.forEach(data -> System.out.println(data));
+//        System.out.println("it gets all");
+//        List<Data> result = new DataDAO(login, password,database).getAll();
+//        result.forEach(data -> System.out.println(data));
+//        System.out.println("7days");
+//        List<Data> result2 = new DataDAO(login, password,database).getRecent7Days();
+//        result2.forEach(data -> System.out.println(data));
+//        System.out.println("recent record");
+        Boolean result3 = new DataDAO(login, password,databaseTest).deleteRecords();
+        System.out.println(result3);
+
+
     }
 }
