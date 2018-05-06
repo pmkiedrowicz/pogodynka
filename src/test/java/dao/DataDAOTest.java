@@ -1,15 +1,9 @@
 package dao;
 
 import dto.Data;
-import org.junit.Assert;
 import org.junit.Test;
-
-import java.sql.Date;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataDAOTest {
     String login = "root";
@@ -18,7 +12,7 @@ public class DataDAOTest {
     DataDAO dataDAO = new DataDAO(login, password, database);
     //    DataDAO dataDAO2 = new DataDAO(login, password,database2);
     java.util.Date date;
-    LocalDateTime currentlyDate = LocalDateTime.of(2016, Month.JANUARY, 14, 17, 22, 33, 666);
+    LocalDateTime currentlyDate = LocalDateTime.now();
     Data data = new Data(29, 43, currentlyDate);
 
     @Test

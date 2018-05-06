@@ -2,6 +2,7 @@ import dao.DataDAO;
 import dto.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -25,15 +26,15 @@ public class Main {
 //        });
         double temp = 22;
         double humi = 23;
-        LocalDate data2 = LocalDate.now();
+        LocalDateTime localDateTime = LocalDateTime.now();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj login: ");
         String login = scanner.next();
         System.out.print("Podaj hasło: ");
         String password = scanner.next();
 
-//        Data newData = new Data(temp, humi, data2);
-//        new DataDAO(login, password,database).insert(newData);
+        Data newData = new Data(temp, humi, localDateTime);
+        new DataDAO(login, password,database).insert(newData);
 
 //        System.out.println("it gets all");
 //        List<Data> result = new DataDAO(login, password,database).getAll();
@@ -42,6 +43,8 @@ public class Main {
 //        List<Data> result2 = new DataDAO(login, password,database).getRecent7Days();
 //        result2.forEach(data -> System.out.println(data));
 //        System.out.println("recent record");
+
+
         Boolean result3 = new DataDAO(login, password, databaseTest).deleteRecords();
         System.out.println(result3);
 
