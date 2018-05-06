@@ -13,9 +13,8 @@ import static spark.Spark.post;
 public class Main {
 
     public static void main(String[] args) {
-        final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/pogodynka?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-
-//        port(8080);
+        String database = "pogodynka";
+        //        port(8080);
 //        get("/hello", (req, res) -> "Hello World");
 //        // http://localhost:8080/sensor?temperature=22.4&humidity=33
 //        post("/sensor", (request, response) -> {
@@ -33,15 +32,15 @@ public class Main {
         String password = scanner.next();
 
         Data newData = new Data(temp, humi, data2);
-        new DataDAO(login, password).insert(newData, CONNECTION_STRING);
+        new DataDAO(login, password,database).insert(newData);
 
-        List<Data> result = new DataDAO(login, password).getAll(CONNECTION_STRING);
+        List<Data> result = new DataDAO(login, password,database).getAll();
         result.forEach(data -> System.out.println(data));
         System.out.println("7days");
-        List<Data> result2 = new DataDAO(login, password).getRecent7Days(CONNECTION_STRING);
+        List<Data> result2 = new DataDAO(login, password,database).getRecent7Days();
         result2.forEach(data -> System.out.println(data));
         System.out.println("recent record");
-        List<Data> result3 = new DataDAO(login, password).getRecentRecord(CONNECTION_STRING);
+        List<Data> result3 = new DataDAO(login, password,database).getRecentRecord();
         result3.forEach(data -> System.out.println(data));
     }
 }
