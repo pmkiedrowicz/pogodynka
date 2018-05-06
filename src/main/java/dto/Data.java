@@ -1,9 +1,5 @@
 package dto;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -13,6 +9,7 @@ import java.time.LocalDate;
 @ToString
 @Builder
 @AllArgsConstructor
+@EqualsAndHashCode
 
 public class Data {
     private int id;
