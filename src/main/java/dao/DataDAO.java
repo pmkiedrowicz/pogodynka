@@ -35,7 +35,7 @@ public class DataDAO {
                                     .id(resultSet.getInt("id"))
                                     .temperature(resultSet.getDouble("temperature"))
                                     .humidity(resultSet.getDouble("humidity"))
-                                    .dateTime(resultSet.getDate("dateTime"))
+                                    .dateTime(resultSet.getDate(DATE).toLocalDate())
                                     .build();
                             result.add(data);
                         }
@@ -55,8 +55,7 @@ public class DataDAO {
                 try (PreparedStatement statement = con.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
                     statement.setDouble(1, data.getTemperature());
                     statement.setDouble(2, data.getHumidity());
-                    statement.setDate(3, new java.sql.Date(data.getDateTime().getTime()));
-
+                    statement.setTimestamp(3, Timestamp.valueOf(data.getDateTime().atStartOfDay()));
                     statement.executeUpdate();
                     try (ResultSet rs = statement.getGeneratedKeys()) {
                         if (rs.next()) {

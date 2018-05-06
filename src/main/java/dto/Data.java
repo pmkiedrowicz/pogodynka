@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -17,9 +18,9 @@ public class Data {
     private int id;
     private double temperature;
     private double humidity;
-    private Date dateTime;
+    private LocalDate dateTime;
 
-    public Data(double temperature, double humidity, Date dateTime) {
+    public Data(double temperature, double humidity, LocalDate dateTime) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.dateTime = dateTime;

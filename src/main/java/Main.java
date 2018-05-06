@@ -1,6 +1,7 @@
 import dao.DataDAO;
 import dto.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -19,16 +20,14 @@ public class Main {
 //            String humidity = request.queryParams("humidity");
 //            return "Podana temperatura=" + temperature + ", wilgotność=" + humidity;
 //        });
-            double temp=30;
-            double humi=50;
-            Date data2 = new Date(1988,9, 05 ,00,00,00);
+            double temp=40;
+            double humi=40;
+             LocalDate data2 = LocalDate.now();
             Scanner scanner = new Scanner(System.in);
             System.out.print("Podaj login: ");
             String login = scanner.next();
             System.out.print("Podaj hasło: ");
             String password = scanner.next();
-
-
 
            Data newData = new Data(temp,humi,data2);
            new DataDAO(login, password).insert(newData);
