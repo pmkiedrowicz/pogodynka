@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         String database = "pogodynka";
-        String databaseTest="pogodynkaTest";
+        String databaseTest = "pogodynkaTest";
         //        port(8080);
 //        get("/hello", (req, res) -> "Hello World");
 //        // http://localhost:8080/sensor?temperature=22.4&humidity=33
@@ -42,7 +42,7 @@ public class Main {
 //        List<Data> result2 = new DataDAO(login, password,database).getRecent7Days();
 //        result2.forEach(data -> System.out.println(data));
 //        System.out.println("recent record");
-        Boolean result3 = new DataDAO(login, password,databaseTest).deleteRecords();
+        Boolean result3 = new DataDAO(login, password, databaseTest).deleteRecords();
         System.out.println(result3);
 
 

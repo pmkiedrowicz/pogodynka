@@ -41,7 +41,7 @@ public class DataDAO {
                                     .id(resultSet.getInt("id"))
                                     .temperature(resultSet.getDouble("temperature"))
                                     .humidity(resultSet.getDouble("humidity"))
-                                    .dateTime(resultSet.getDate(DATE).toLocalDate())
+                                    .dateTime(resultSet.getTimestamp(DATE).toLocalDateTime())
                                     .build();
                             result.add(data);
                         }
@@ -67,7 +67,7 @@ public class DataDAO {
                                     .id(resultSet.getInt("id"))
                                     .temperature(resultSet.getDouble("temperature"))
                                     .humidity(resultSet.getDouble("humidity"))
-                                    .dateTime(resultSet.getDate(DATE).toLocalDate())
+                                    .dateTime(resultSet.getTimestamp(DATE).toLocalDateTime())
                                     .build();
                             result.add(data);
                         }
@@ -93,13 +93,13 @@ public class DataDAO {
                                     .id(resultSet.getInt("id"))
                                     .temperature(resultSet.getDouble("temperature"))
                                     .humidity(resultSet.getDouble("humidity"))
-                                    .dateTime(resultSet.getDate(DATE).toLocalDate())
+                                    .dateTime(resultSet.getTimestamp(DATE).toLocalDateTime())
                                     .build();
                             result.add(data);
                         }
                     }
                 }
-            con.close();
+                con.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -114,7 +114,7 @@ public class DataDAO {
                 try (PreparedStatement statement = con.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
                     statement.setDouble(1, data.getTemperature());
                     statement.setDouble(2, data.getHumidity());
-                    statement.setTimestamp(3, Timestamp.valueOf(data.getDateTime().atStartOfDay()));
+                    statement.setTimestamp(3, Timestamp.valueOf(data.getDateTime()));
                     statement.executeUpdate();
                     try (ResultSet rs = statement.getGeneratedKeys()) {
                         if (rs.next()) {
@@ -123,12 +123,14 @@ public class DataDAO {
                     }
                     data.setId(result);
                 }
-            con.close();}
+                con.close();
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
+
 
     }
 
@@ -138,9 +140,9 @@ public class DataDAO {
             try (Connection con = DriverManager.getConnection(connectionString, login, password)) {
                 String tableSql = "TRUNCATE TABLE data";
                 try (Statement statement = con.createStatement()) {
-                    result=statement.execute(tableSql);
+                    result = statement.execute(tableSql);
                 }
-            con.close();
+                con.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
