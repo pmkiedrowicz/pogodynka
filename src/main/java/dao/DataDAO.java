@@ -19,7 +19,7 @@ public class DataDAO {
     private static final String HUMIDITY = "Humidity";
     private static final String DATE = "DateTime";
     private static final String insertQuery = "INSERT INTO data (Temperature,Humidity,DateTime)VALUES(?,?,?)";
-    private static String connectionString = "jdbc:mysql://localhost:3306/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private String connectionString = "jdbc:mysql://localhost:3306/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String login;
     private String password;
 
@@ -138,7 +138,6 @@ public class DataDAO {
             try (Connection con = DriverManager.getConnection(connectionString, login, password)) {
                 String tableSql = "TRUNCATE TABLE data";
                 try (Statement statement = con.createStatement()) {
-
                     result=statement.execute(tableSql);
                 }
             con.close();
