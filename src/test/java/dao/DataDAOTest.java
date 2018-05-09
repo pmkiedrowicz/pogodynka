@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DataDAOTest {
     String login = "root";
-    String password = "root";
+    String password = "kakashi6";
     String database = "pogodynkaTest";
     DataDAO dataDAO = new DataDAO(login, password, database);
     //    DataDAO dataDAO2 = new DataDAO(login, password,database2);
