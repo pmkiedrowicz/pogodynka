@@ -109,6 +109,7 @@ public class DataDAO {
     }
 
     public Integer insert(Data data) {
+        SimpleDateFormat sourceDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss");
         Integer result = null;
         try {
             try (Connection con = DriverManager.getConnection(connectionString, login, password)) {
@@ -116,6 +117,7 @@ public class DataDAO {
                     statement.setDouble(1, data.getTemperature());
                     statement.setDouble(2, data.getHumidity());
                     statement.setTimestamp(3, Timestamp.valueOf(data.getDateTime()));
+//                    statement.setTimestamp(3, Timestamp.valueOf(data.getDateTime()));
                     statement.executeUpdate();
                     try (ResultSet rs = statement.getGeneratedKeys()) {
                         if (rs.next()) {
