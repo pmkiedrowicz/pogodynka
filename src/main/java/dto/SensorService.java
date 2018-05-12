@@ -32,26 +32,25 @@ public class SensorService {
         return result;
     }
 
-//    public List<Data> getRecent7DaysFrom12OClock2() {
-//        List<Data> result = new ArrayList<>();
-//        LocalDate now = LocalDate.now();
-//        int records = 7;
-//        int then;
-//        for (int j = 0; j <= list.size() - 1; j++) {
-//            then = now.minusDays(records).getDayOfMonth();
-//            if (list.get(j).getDateTime().getDayOfMonth() == then) {
-//                if (list.get(j).getDateTime().getHour() >= 12) {
-//                    result.add(list.get(j));
-//                    j = list.size() - 1;
-//                    records--;
-//                }
-//                if (j == list.size() - 1){
-//                    j=0;
-//                    records--;
-//                }
-//
-//            }
-//        }
-//        return result;
-//    }
+    public List<Data> getRecent7DaysFrom12OClock2() {
+        List<Data> result = new ArrayList<>();
+        LocalDate now = LocalDate.now();
+        int records = 7;
+        int then;
+        for (int j = 0; j <= list.size() - 1; j++) {
+            then = now.minusDays(records).getDayOfMonth();
+            if (list.get(j).getDateTime().getDayOfMonth() == then) {
+                if (list.get(j).getDateTime().getHour() >= 12) {
+                    result.add(list.get(j));
+                    j = list.size() - 1;
+                    records--;
+                } else if (j == list.size() - 1) {
+                    j = 0;
+                    records--;
+                }
+
+            }
+        }
+        return result;
+    }
 }
