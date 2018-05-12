@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="346.0" fitWidth="300.0" layoutX="1.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.49;">
+      <ImageView fitHeight="346.0" fitWidth="300.0" layoutX="3.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.49;">
          <image>
             <Image url="@../../../../pogodynka_składowe/cityscape.png" />
          </image>
       </ImageView>
-      <TextField fx:id="temperature" alignment="CENTER" layoutX="29.0" layoutY="58.0" opacity="0.49" prefHeight="195.0" prefWidth="242.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="48">
+      <TextField fx:id="temperature" alignment="CENTER" layoutX="276.0" layoutY="44.0" opacity="0.49" prefHeight="195.0" prefWidth="242.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="48">
          <font>
             <Font name="Microsoft YaHei Bold" size="96.0" />
          </font>
       </TextField>
-      <TextField layoutX="168.0" layoutY="71.0" opacity="0.49" prefHeight="137.0" prefWidth="145.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: DC143C;" text="°">
+      <TextField layoutX="414.0" layoutY="57.0" opacity="0.49" prefHeight="137.0" prefWidth="145.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="°">
          <font>
             <Font size="64.0" />
          </font>
@@ -28,25 +30,30 @@
             <Font name="Microsoft YaHei" size="24.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="50.0" layoutY="140.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="303.0" layoutY="130.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../pogodynka_składowe/45969.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="92.0" layoutY="200.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="28.0" fitWidth="23.0" layoutX="342.0" layoutY="195.0" opacity="0.39" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../pogodynka_składowe/img_116176.png" />
          </image>
       </ImageView>
-      <TextField fx:id="humidity" alignment="CENTER" layoutX="103.0" layoutY="189.0" opacity="0.49" prefHeight="50.0" prefWidth="82.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="24">
+      <TextField fx:id="humidity" alignment="CENTER" layoutX="351.0" layoutY="184.0" opacity="0.49" prefHeight="50.0" prefWidth="82.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="24">
          <font>
             <Font name="Microsoft YaHei Bold" size="24.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="150.0" layoutY="189.0" opacity="0.49" prefHeight="50.0" prefWidth="52.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="\%">
+      <TextField alignment="CENTER" layoutX="397.0" layoutY="184.0" opacity="0.49" prefHeight="50.0" prefWidth="52.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="\%">
          <font>
             <Font name="Microsoft YaHei Bold" size="24.0" />
          </font>
       </TextField>
+      <ButtonBar layoutX="292.0" prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button fx:id="pobierz" mnemonicParsing="false" onAction="#onClick" text="Pobierz temperaturę" />
+        </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>
