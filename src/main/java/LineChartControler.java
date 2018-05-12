@@ -1,9 +1,14 @@
+import dto.Data;
+import dto.SensorService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+import java.util.List;
 
 public class LineChartControler {
 
@@ -20,8 +25,14 @@ public class LineChartControler {
     private Button pobierzTemperatureRecent;
 
     @FXML
+    private TextField temp_6;
+
+    @FXML
     void onClick1(ActionEvent event) {
-    
+        SensorService sensorService = new SensorService();
+        List<Data> last7Days = sensorService.getRecent7DaysFrom12OClock();
+        temp_6.setText(Double.toString(last7Days.get(0).getTemperature()));
+
     }
 
 

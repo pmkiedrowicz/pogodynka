@@ -1,6 +1,11 @@
 import dao.DataDAO;
 import dto.Data;
 import dto.SensorService;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.lang.reflect.Array;
 import java.time.LocalDate;
@@ -12,8 +17,21 @@ import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 
-public class Main {
+public class Main extends Application {
     public static void main(String[] args) {
+        Application.launch(Main.class, args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/graphView.fxml"));
+        Scene scene = new Scene(root,500,300);
+        Stage stage = new Stage();
+        stage.setTitle("FXML Example");
+        stage.setScene(scene);
+        stage.show();
+
+
 //        String database = "pogodynka";
 //        String login = "root";
 //        String password = "root";
@@ -41,8 +59,8 @@ public class Main {
 //        });
 //
 //
-        SensorService sensorService=new SensorService();
-        sensorService.getRecent7DaysFrom12OClock().forEach(el-> System.out.println(el.toString()));
+//        SensorService sensorService=new SensorService();
+//        sensorService.getRecent7DaysFrom12OClock().forEach(el-> System.out.println(el.toString()));
 //        System.out.println(" 222");
 //        sensorService.getRecent7DaysFrom12OClock2().forEach(el-> System.out.println(el.toString()));
 //

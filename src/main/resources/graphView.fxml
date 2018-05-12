@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LineChartControler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;"  xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LineChartControler">
     <children>
         <ImageView fitHeight="287.0" fitWidth="490.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.1;">
             <image>
@@ -31,42 +31,42 @@
                 <NumberAxis fx:id="y" side="LEFT" />
             </yAxis>
         </LineChart>
-        <TextField layoutX="14.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
+        <TextField fx:id="temp_6" layoutX="14.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="81.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
+        <TextField fx:id="temp_5" layoutX="81.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="148.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
+        <TextField fx:id="temp_4" layoutX="148.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="215.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
+        <TextField fx:id="temp_3" layoutX="215.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="289.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
+        <TextField fx:id="temp_2" layoutX="289.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="360.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
+        <TextField fx:id="temp_1" layoutX="360.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="432.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
+        <TextField fx:id="temp_0" layoutX="432.0" layoutY="197.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="temp">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="14.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
+        <TextField fx:id="humi_6" layoutX="14.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
@@ -76,32 +76,32 @@
                 <Font name="Microsoft YaHei" size="8.0" />
             </font>
         </TextField>
-        <TextField layoutX="81.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
+        <TextField fx:id="humi_5" layoutX="81.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="215.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
+        <TextField fx:id="humi_3" layoutX="215.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="148.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
+        <TextField fx:id="humi_4" layoutX="148.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="289.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
+        <TextField fx:id="humi_2" layoutX="289.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="360.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
+        <TextField fx:id="humi_1" layoutX="360.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
         </TextField>
-        <TextField layoutX="432.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
+        <TextField fx:id="humi_0" layoutX="432.0" layoutY="222.0" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="humi">
             <font>
                 <Font name="Microsoft YaHei" size="12.0" />
             </font>
