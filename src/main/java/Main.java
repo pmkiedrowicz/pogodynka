@@ -34,7 +34,7 @@ public class Main extends Application {
 
 //        String database = "pogodynka";
         String login = "root";
-        String password = "root";
+        String password = "kakashi6";
         String databaseTest = "pogodynkaTest";
 //        port(8080);
 //
