@@ -21,7 +21,11 @@ public class Main {
         DataDAO dataDAO = new DataDAO(login, password, databaseTest);
 
 
-        get("/hello", (req, res) -> "Hello World");
+        get("/sensor", (req, res) -> {
+            String temperature = req.queryParams("temperature");
+            String humidity = req.queryParams("humidity");
+            return "Podana temperatura=" + temperature + ", wilgotność=" + humidity;
+        });
         // http://localhost:8080/sensor?temperature=22.4&humidity=33
         post("/sensor", (request, response) -> {
             Double temperature = Double.valueOf(request.queryParams("temperature"));
