@@ -140,7 +140,8 @@ public class DataDAO {
             try (Connection con = DriverManager.getConnection(connectionString, login, password)) {
                 String tableSql = "TRUNCATE TABLE data";
                 try (Statement statement = con.createStatement()) {
-                    result = statement.execute(tableSql);
+                    statement.execute(tableSql);
+                    result = true;
                 }
                 con.close();
             }

@@ -1,20 +1,17 @@
 package dao;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import dto.Data;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DataDAOTest {
     String login = "root";
-    String password = "kakashi6";
+    String password = "root";
     String database = "pogodynkaTest";
     DataDAO dataDAO = new DataDAO(login, password, database);
 
@@ -91,4 +88,15 @@ public class DataDAOTest {
         Assert.assertEquals(expectedLast, result);
     }
 
+    @Test
+    public void deleteRecords() {
+        dataDAO.insert(data);
+        dataDAO.insert(data2);
+        dataDAO.insert(data3);
+        dataDAO.insert(data4);
+        dataDAO.deleteRecords();
+        Assert.assertTrue(dataDAO.deleteRecords());
+        List<Data> expectedEmpty = new ArrayList<>();
+        Assert.assertEquals(expectedEmpty,dataDAO.getAll());
+    }
 }
