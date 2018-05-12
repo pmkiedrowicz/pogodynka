@@ -28,13 +28,64 @@ public class LineChartControler {
     private TextField temp_6;
 
     @FXML
+    private TextField temp_5;
+
+    @FXML
+    private TextField temp_4;
+
+    @FXML
+    private TextField temp_3;
+
+    @FXML
+    private TextField temp_2;
+
+    @FXML
+    private TextField temp_1;
+
+    @FXML
+    private TextField temp_0;
+
+    @FXML
+    private TextField humi_6;
+
+    @FXML
+    private TextField humi_5;
+
+    @FXML
+    private TextField humi_4;
+
+    @FXML
+    private TextField humi_3;
+
+    @FXML
+    private TextField humi_2;
+
+    @FXML
+    private TextField humi_1;
+
+    @FXML
+    private TextField humi_0;
+
+    @FXML
     void onClick1(ActionEvent event) {
         SensorService sensorService = new SensorService();
         List<Data> last7Days = sensorService.getRecent7DaysFrom12OClock();
         temp_6.setText(Double.toString(last7Days.get(0).getTemperature()));
+        temp_5.setText(Double.toString(last7Days.get(1).getTemperature()));
+        temp_4.setText(Double.toString(last7Days.get(2).getTemperature()));
+        temp_3.setText(Double.toString(last7Days.get(3).getTemperature()));
+        temp_2.setText(Double.toString(last7Days.get(4).getTemperature()));
+        temp_1.setText(Double.toString(last7Days.get(5).getTemperature()));
+        temp_0.setText(Double.toString(last7Days.get(6).getTemperature()));
+        humi_6.setText(Double.toString(last7Days.get(0).getTemperature()));
+        humi_5.setText(Double.toString(last7Days.get(1).getTemperature()));
+        humi_4.setText(Double.toString(last7Days.get(2).getTemperature()));
+        humi_3.setText(Double.toString(last7Days.get(3).getTemperature()));
+        humi_2.setText(Double.toString(last7Days.get(4).getTemperature()));
+        humi_1.setText(Double.toString(last7Days.get(5).getTemperature()));
+        humi_0.setText(Double.toString(last7Days.get(6).getTemperature()));
 
     }
-
 
 }
 
