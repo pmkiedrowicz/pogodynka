@@ -1,6 +1,5 @@
 package dao;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import dto.Data;
 import org.junit.Assert;
 import org.junit.Test;
