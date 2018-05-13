@@ -37,7 +37,6 @@ public class Main extends Application {
         String databaseTest = "pogodynkaTest";
 //
         DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
         DataDAO dataDAO = new DataDAO(login, password, databaseTest);
         System.out.println(dataDAO.getRecent7Days());
         //
@@ -50,6 +49,7 @@ public class Main extends Application {
         });
 //         http://localhost:8080/sensor?temperature=22.4&humidity=33
         post("/sensor", (request, response) -> {
+        LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
 
             //need to add IF statement to check if its not send empty String (makes error)
             //java.lang.NumberFormatException: empty String
