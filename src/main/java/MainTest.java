@@ -1,7 +1,9 @@
 import dao.DataDAO;
 import dto.Data;
+import multicast.MulticastPublisher;
 import multicast.MulticastReceiver;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -15,9 +17,15 @@ import static spark.Spark.post;
 public class MainTest {
 
     public static void main(String[] args) {
-
         MulticastReceiver multicastReceiver = new MulticastReceiver();
         multicastReceiver.run();
+        MulticastPublisher multicastPublisher=new MulticastPublisher();
+        try {
+            multicastPublisher.multicast("tralala");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
       //  multicastReceiver.start();
 
 //        String database = "pogodynka";
