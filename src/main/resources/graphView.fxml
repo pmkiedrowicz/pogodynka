@@ -15,7 +15,7 @@
     <children>
         <ImageView fitHeight="287.0" fitWidth="490.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.1;">
             <image>
-                <Image url="@../../../../pogodynka/cityscape.png" />
+                <Image url="@cityscape.png" />
             </image>
         </ImageView>
         <TextField alignment="CENTER" layoutX="-9.0" layoutY="7.0" opacity="0.4" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Last week">
