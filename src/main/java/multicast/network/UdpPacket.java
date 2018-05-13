@@ -8,6 +8,8 @@ import multicast.message.MessageType;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class UdpPacket {
 	private MessageType type;
 	private int length;

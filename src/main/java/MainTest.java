@@ -1,5 +1,6 @@
 import dao.DataDAO;
 import dto.Data;
+import multicast.IntroduceService;
 import multicast.MulticastPublisher;
 import multicast.MulticastReceiver;
 
@@ -20,12 +21,15 @@ public class MainTest {
 //        MulticastReceiver multicastReceiver = new MulticastReceiver();
 //        multicastReceiver.run();
 
-        MulticastPublisher multicastPublisher=new MulticastPublisher();
-        try {
-            multicastPublisher.multicast("tralala");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        IntroduceService introduceService=new IntroduceService();
+        introduceService.run();
+
+//        MulticastPublisher multicastPublisher=new MulticastPublisher();
+//        try {
+//            multicastPublisher.multicast("tralala");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
       //  multicastReceiver.start();
 
