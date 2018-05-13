@@ -34,6 +34,10 @@ public class SensorService {
         }
         return result;
     }
+}
+
+
+
 //
 //    public List<Data> getRecent7DaysFrom12OClock2() {
 //        List<Data> result = new ArrayList<>();
@@ -56,4 +60,3 @@ public class SensorService {
 //        }
 //        return result;
 //    }
-}

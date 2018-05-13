@@ -31,33 +31,35 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-
 //        String database = "pogodynka";
         String login = "root";
-        String password = "kakashi6";
+        String password = "root";
         String databaseTest = "pogodynkaTest";
-//        port(8080);
 //
-//        DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-//        LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
+        DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
         DataDAO dataDAO = new DataDAO(login, password, databaseTest);
         System.out.println(dataDAO.getRecent7Days());
         //
 //
-//        get("/sensor", (req, res) -> {
-//            String temperature = req.queryParams("temperature");
-//            String humidity = req.queryParams("humidity");
-//            return "Podana temperatura=" + temperature + ", wilgotność=" + humidity;
-//        });
-//        // http://localhost:8080/sensor?temperature=22.4&humidity=33
-//        post("/sensor", (request, response) -> {
-//            Double temperature = Double.valueOf(request.queryParams("temperature"));
-//            Double humidity = Double.valueOf(request.queryParams("humidity"));
-//            Data data = new Data(temperature, humidity, currentlyDate);
-////            return "Podana temperatura=" + temperature + ", wilgotność=" + humidity;
-//            dataDAO.insert(data);
-//            return "Data were put into database";
-//        });
+        port(8080);
+        get("/sensor", (req, res) -> {
+            String temperature = req.queryParams("temperature");
+            String humidity = req.queryParams("humidity");
+            return "Podana temperatura=" + temperature + ", wilgotność=" + humidity;
+        });
+//         http://localhost:8080/sensor?temperature=22.4&humidity=33
+        post("/sensor", (request, response) -> {
+
+            //need to add IF statement to check if its not send empty String (makes error)
+            //java.lang.NumberFormatException: empty String
+            //	at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1842)
+            Double temperature = Double.valueOf(request.queryParams("temperature"));
+            Double humidity = Double.valueOf(request.queryParams("humidity"));
+            Data data = new Data(temperature, humidity, currentlyDate);
+            dataDAO.insert(data);
+            return "Data were put into database";
+        });
 //
 //
         SensorService sensorService=new SensorService();
