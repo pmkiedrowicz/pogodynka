@@ -2,14 +2,12 @@ import dto.Data;
 import dto.SensorService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -88,10 +86,6 @@ public class LineChartControler {
         humi_1.setText(Double.toString(last7Days.get(5).getHumidity()));
         humi_0.setText(Double.toString(last7Days.get(6).getHumidity()));
 
-
-
-
-
         LineChart.setTitle("Last Week");
 
         XYChart.Series series1 = new XYChart.Series();
@@ -120,10 +114,3 @@ public class LineChartControler {
 
     }
 }
-//    }
-//
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-//}
-
