@@ -17,8 +17,9 @@ import static spark.Spark.post;
 public class MainTest {
 
     public static void main(String[] args) {
-        MulticastReceiver multicastReceiver = new MulticastReceiver();
-        multicastReceiver.run();
+//        MulticastReceiver multicastReceiver = new MulticastReceiver();
+//        multicastReceiver.run();
+
         MulticastPublisher multicastPublisher=new MulticastPublisher();
         try {
             multicastPublisher.multicast("tralala");
