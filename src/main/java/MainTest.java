@@ -1,5 +1,6 @@
 import dao.DataDAO;
 import dto.Data;
+import multicast.MulticastReceiver;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +15,11 @@ import static spark.Spark.post;
 public class MainTest {
 
     public static void main(String[] args) {
+
+        MulticastReceiver multicastReceiver = new MulticastReceiver();
+        multicastReceiver.run();
+      //  multicastReceiver.start();
+
 //        String database = "pogodynka";
 //        String databaseTest = "pogodynkaTest";
         //        port(8080);
