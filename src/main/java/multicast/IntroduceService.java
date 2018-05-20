@@ -9,23 +9,30 @@ import java.net.UnknownHostException;
 
 public class IntroduceService extends Thread {
     MessageConverter messageConverter = new MessageConverter();
-    private String addr;
+    private String localIPAdress;
 
     @Override
     public void run() {
         try {
-            addr = InetAddress.getLocalHost().getHostAddress();
-            System.out.println(addr);
+            localIPAdress = InetAddress.getLocalHost().getHostAddress();
+            System.out.println(localIPAdress);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
 
         IntroduceResponce introduceResponce = new IntroduceResponce();
-        introduceResponce.setIp(addr);
+        introduceResponce.setIp(localIPAdress);
         introduceResponce.setPort(8080);
 
 
         UdpPacket udpPacket = messageConverter.serialize(introduceResponce);
+
+
+        try {
+            sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         System.out.println(udpPacket);
 
