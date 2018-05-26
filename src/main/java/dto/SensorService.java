@@ -1,6 +1,6 @@
 package dto;
 
-import dao.DataDAO;
+import dao.DataDAOImpl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class SensorService {
     String password = "kakashi6";
     String database = "pogodynka";
     String port = "3306";
-    DataDAO dataDAO = new DataDAO(login, password, port, database);
+    DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, database);
 
     List<Data> list = dataDAO.getRecent7Days();
 
@@ -32,6 +32,11 @@ public class SensorService {
             }
         }
         return result;
+    }
+
+    public Data getLast(){
+        Data result = dataDAO.getRecentRecord();
+        return  result;
     }
 }
 

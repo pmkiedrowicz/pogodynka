@@ -1,4 +1,6 @@
+import controlers.WeatherAppControler;
 import dao.DataDAO;
+import dao.DataDAOImpl;
 import dto.Data;
 import dto.SensorService;
 import javafx.application.Application;
@@ -6,40 +8,54 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import settings.AppSettings;
+import threads.TemperatureWatcher;
 
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
+import static spark.Spark.delete;
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 
 public class Main extends Application {
     public static void main(String[] args) {
+
+
         Application.launch(Main.class, args);
+
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        DataDAOImpl dataDAOImp = new DataDAOImpl(AppSettings.login ,AppSettings.password,AppSettings.port,AppSettings.database);
+
         Parent root = FXMLLoader.load(getClass().getResource("/graphView.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/weatherAppTemp.fxml"));
+        Parent root2 = loader.load();
+
         Scene scene = new Scene(root,500,300);
+        Scene scene2 = new Scene(root2,500,300);
+
+        scene.getStylesheets().add("style.css");
         Stage stage = new Stage();
-        stage.setTitle("FXML Example");
+        Stage stage2 = new Stage();
+
+        stage.setTitle("Wykres");
         stage.setScene(scene);
+        stage2.setTitle("Pogodynka");
+        stage2.setScene(scene2);
+        WeatherAppControler controler = loader.<WeatherAppControler>getController();
+        TemperatureWatcher temperatureWatcher = new TemperatureWatcher(dataDAOImp,controler);
+        temperatureWatcher.start();
+
         stage.show();
+        stage2.show();
 
 //        String database = "pogodynka";
-        String login = "root";
-        String password = "kakashi6";
-        String databaseTest = "pogodynka";
-        String port ="3306";
-//
-        DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        DataDAO dataDAO = new DataDAO(login, password,port, databaseTest);
-        System.out.println(dataDAO.getRecent7Days());
         //
 
 //
@@ -51,7 +67,15 @@ public class Main extends Application {
         });
 //         http://localhost:8080/sensor?temperature=22.4&humidity=33
         post("/sensor", (request, response) -> {
-        LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
+            String login = "root";
+            String password = "kakashi6";
+            String databaseTest = "pogodynka";
+            String port ="3306";
+//
+            DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+            DataDAOImpl dataDAO = new DataDAOImpl(login, password,port, databaseTest);
+            System.out.println(dataDAO.getRecent7Days());
+            LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
 
             //need to add IF statement to check if its not send empty String (makes error)
             //java.lang.NumberFormatException: empty String

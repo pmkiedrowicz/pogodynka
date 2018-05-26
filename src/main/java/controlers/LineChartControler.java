@@ -1,3 +1,5 @@
+package controlers;
+
 import dto.Data;
 import dto.SensorService;
 import javafx.event.ActionEvent;

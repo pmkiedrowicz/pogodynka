@@ -1,15 +1,4 @@
-import dao.DataDAO;
-import dto.Data;
 import multicast.IntroduceService;
-import multicast.MulticastPublisher;
-import multicast.MulticastReceiver;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -53,18 +42,18 @@ public class MainTest {
 //        String password = scanner.next();
 //
 //        Data newData = new Data(temp, humi, localDateTime);
-//        new DataDAO(login, password,database).insert(newData);
+//        new DataDAOImpl(login, password,database).insert(newData);
 //
 //        System.out.println("it gets all");
-//        List<Data> result = new DataDAO(login, password,database).getAll();
+//        List<Data> result = new DataDAOImpl(login, password,database).getAll();
 //        result.forEach(data -> System.out.println(data));
 //        System.out.println("7days");
-//        List<Data> result2 = new DataDAO(login, password,database).getRecent7Days();
+//        List<Data> result2 = new DataDAOImpl(login, password,database).getRecent7Days();
 //        result2.forEach(data -> System.out.println(data));
 //        System.out.println("recent record");
 
 
-//        Boolean result3 = new DataDAO(login, password, databaseTest).deleteRecords();
+//        Boolean result3 = new DataDAOImpl(login, password, databaseTest).deleteRecords();
 //        System.out.println(result3);
 
 

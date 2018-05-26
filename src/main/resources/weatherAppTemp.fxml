@@ -8,24 +8,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.WeatherAppControler">
    <children>
       <ImageView fitHeight="346.0" fitWidth="300.0" layoutX="3.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.49;">
          <image>
             <Image url="@cityscape.png" />
          </image>
       </ImageView>
-      <TextField fx:id="temperature" alignment="CENTER" layoutX="276.0" layoutY="44.0" opacity="0.49" prefHeight="195.0" prefWidth="242.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="48">
+      <TextField fx:id="temperature" alignment="CENTER" editable="false" layoutX="276.0" layoutY="44.0" opacity="0.49" prefHeight="195.0" prefWidth="242.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="48,2">
          <font>
-            <Font name="Microsoft YaHei Bold" size="96.0" />
+            <Font name="Microsoft YaHei Bold" size="57.0" />
          </font>
       </TextField>
-      <TextField layoutX="414.0" layoutY="57.0" opacity="0.49" prefHeight="137.0" prefWidth="145.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="°">
+      <TextField editable="false" layoutX="414.0" layoutY="57.0" opacity="0.49" prefHeight="137.0" prefWidth="145.0" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="°">
          <font>
             <Font size="64.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="-9.0" layoutY="7.0" opacity="0.4" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Bydgoszcz, PL">
+      <TextField alignment="CENTER" editable="false" layoutX="-9.0" layoutY="7.0" opacity="0.4" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Bydgoszcz, PL">
          <font>
             <Font name="Microsoft YaHei" size="24.0" />
          </font>
@@ -40,12 +40,12 @@
             <Image url="@/img_116176.png" />
          </image>
       </ImageView>
-      <TextField fx:id="humidity" alignment="CENTER" layoutX="351.0" layoutY="184.0" opacity="0.49" prefHeight="50.0" prefWidth="82.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="24">
+      <TextField fx:id="humidity" alignment="CENTER" editable="false" layoutX="351.0" layoutY="184.0" opacity="0.49" prefHeight="50.0" prefWidth="82.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="24,4">
          <font>
             <Font name="Microsoft YaHei Bold" size="24.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="397.0" layoutY="184.0" opacity="0.49" prefHeight="50.0" prefWidth="52.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="\%">
+      <TextField alignment="CENTER" editable="false" layoutX="414.0" layoutY="184.0" opacity="0.49" prefHeight="50.0" prefWidth="52.0" style="-fx-text-inner-color: #DC143C; -fx-background-color: rgba(0,0,0,0);" text="\%">
          <font>
             <Font name="Microsoft YaHei Bold" size="24.0" />
          </font>
