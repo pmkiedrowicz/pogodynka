@@ -22,14 +22,14 @@ public class DataDAO {
     private static final String insertQuery = "INSERT INTO data (Temperature,Humidity,DateTime)VALUES(?,?,?)";
     //zeby embedded dzialala localhost musi byc 4545
     // w normalnym tescie localhost 3306
-    private String connectionString = "jdbc:mysql://localhost:4545/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private String connectionString = "jdbc:mysql://localhost:%s/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String login;
     private String password;
 
-    public DataDAO(String login, String password, String database) {
+    public DataDAO(String login, String password,String port, String database) {
         this.login = login;
         this.password = password;
-        connectionString = String.format(connectionString, database);
+        connectionString = String.format(connectionString, port, database);
     }
 
     public List<Data> getAll() {

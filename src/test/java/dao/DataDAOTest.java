@@ -10,9 +10,10 @@ import java.util.List;
 
 public class DataDAOTest {
     String login = "root";
-    String password = "root";
+    String password = "kakashi6";
     String database = "pogodynkaTest";
-    DataDAO dataDAO = new DataDAO(login, password, database);
+    String port ="3306";
+    DataDAO dataDAO = new DataDAO(login, password,port, database);
 
     String dateOne ="2018-03-20T20:20:16";
     String dateTwo ="2018-01-20T13:13:16";
@@ -47,7 +48,7 @@ public class DataDAOTest {
         dataDAO.insert(data2);
         expected.add(data2);
 
-        List<Data> result = new DataDAO(login, password, database).getAll();
+        List<Data> result = new DataDAO(login, password,port, database).getAll();
         Assert.assertEquals(expected, result);
     }
 
@@ -70,7 +71,7 @@ public class DataDAOTest {
         expected7days.add(data6);
         expected7days.add(data8);
 
-        List<Data> result = new DataDAO(login, password, database).getRecent7Days();
+        List<Data> result = new DataDAO(login, password,port, database).getRecent7Days();
         Assert.assertEquals(expected7days, result);
     }
 
@@ -83,7 +84,7 @@ public class DataDAOTest {
         dataDAO.insert(data4);
         List<Data> expectedLast = new ArrayList<>();
         expectedLast.add(data4);
-        List<Data> result = new DataDAO(login, password, database).getRecentRecord();
+        List<Data> result = new DataDAO(login, password,port, database).getRecentRecord();
         Assert.assertEquals(expectedLast, result);
     }
 

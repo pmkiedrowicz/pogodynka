@@ -31,7 +31,7 @@ public class DataDAOEmbeddedTest {
         mysqld.stop();
     }
 
-    DataDAO dataDAO = new DataDAO("test", "test", "pogodaEmbedded");
+    DataDAO dataDAO = new DataDAO("test", "test", "4545","pogodaEmbedded");
 
     String dateOne ="2018-03-20T20:20:16";
     String dateTwo ="2018-01-20T13:13:16";
@@ -66,7 +66,7 @@ public class DataDAOEmbeddedTest {
         dataDAO.insert(data2);
         expected.add(data2);
 
-        List<Data> result = new DataDAO("test", "test", "pogodaEmbedded").getAll();
+        List<Data> result = new DataDAO("test", "test", "4545","pogodaEmbedded").getAll();
         Assert.assertEquals(expected, result);
     }
 
@@ -89,7 +89,7 @@ public class DataDAOEmbeddedTest {
         expected7days.add(data6);
         expected7days.add(data8);
 
-        List<Data> result = new DataDAO("test", "test", "pogodaEmbedded").getRecent7Days();
+        List<Data> result = new DataDAO("test", "test", "4545","pogodaEmbedded").getRecent7Days();
         Assert.assertEquals(expected7days, result);
     }
 
@@ -102,7 +102,7 @@ public class DataDAOEmbeddedTest {
         dataDAO.insert(data4);
         List<Data> expectedLast = new ArrayList<>();
         expectedLast.add(data4);
-        List<Data> result = new DataDAO("test", "test", "pogodaEmbedded").getRecentRecord();
+        List<Data> result = new DataDAO("test", "test", "4545","pogodaEmbedded").getRecentRecord();
         Assert.assertEquals(expectedLast, result);
     }
 

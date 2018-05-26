@@ -35,9 +35,10 @@ public class Main extends Application {
         String login = "root";
         String password = "root";
         String databaseTest = "pogodynkaTest";
+        String port ="3306";
 //
         DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        DataDAO dataDAO = new DataDAO(login, password, databaseTest);
+        DataDAO dataDAO = new DataDAO(login, password,port, databaseTest);
         System.out.println(dataDAO.getRecent7Days());
         //
 //

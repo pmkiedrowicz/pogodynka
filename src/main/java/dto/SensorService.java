@@ -11,7 +11,8 @@ public class SensorService {
     String login = "root";
     String password = "root";
     String database = "pogodynkaTest";
-    DataDAO dataDAO = new DataDAO(login, password, database);
+    String port = "3306";
+    DataDAO dataDAO = new DataDAO(login, password, port, database);
 
     List<Data> list = dataDAO.getRecent7Days();
 
@@ -35,7 +36,6 @@ public class SensorService {
         return result;
     }
 }
-
 
 
 //
