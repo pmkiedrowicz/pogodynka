@@ -9,8 +9,8 @@ import java.util.List;
 public class SensorService {
 
     String login = "root";
-    String password = "root";
-    String database = "pogodynkaTest";
+    String password = "kakashi6";
+    String database = "pogodynka";
     String port = "3306";
     DataDAO dataDAO = new DataDAO(login, password, port, database);
 
@@ -18,9 +18,7 @@ public class SensorService {
 
     public List<Data> getRecent7DaysFrom12OClock() {
         List<Data> result = new ArrayList<>();
-//        System.out.println("start ");
-//        System.out.println(list);
-//        System.out.println("finish");
+
         LocalDate now = LocalDate.now();
         for (int i = 7; i >= 0; i--) {
             int then = now.minusDays(i).getDayOfMonth();
