@@ -20,7 +20,9 @@ public class DataDAO {
     private static final String HUMIDITY = "Humidity";
     private static final String DATE = "DateTime";
     private static final String insertQuery = "INSERT INTO data (Temperature,Humidity,DateTime)VALUES(?,?,?)";
-    private String connectionString = "jdbc:mysql://localhost:3306/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    //zeby embedded dzialala localhost musi byc 4545
+    // w normalnym tescie localhost 3306
+    private String connectionString = "jdbc:mysql://localhost:4545/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String login;
     private String password;
 
