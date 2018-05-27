@@ -13,17 +13,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.LineChartControler">
     <children>
-        <ImageView fitHeight="287.0" fitWidth="490.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.1;">
+        <ImageView fitHeight="287.0" fitWidth="490.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.3;">
             <image>
                 <Image url="@cityscape.png" />
             </image>
         </ImageView>
-        <TextField alignment="CENTER" editable="false" layoutX="-9.0" layoutY="7.0" opacity="0.4" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Last week">
+        <TextField alignment="CENTER" editable="false" layoutX="-9.0" layoutY="7.0" opacity="0.6" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Last week">
             <font>
                 <Font name="Microsoft YaHei" size="24.0" />
             </font>
         </TextField>
-        <LineChart fx:id="LineChart" layoutY="42.0" prefHeight="167.0" prefWidth="500.0" style="-fx-background-color: rgba(0,0,0,0);" animated="false">
+        <LineChart fx:id="LineChart" animated="false" layoutY="42.0" opacity="0.7" prefHeight="167.0" prefWidth="500.0" style="-fx-background-color: rgba(0,0,0,0);">
             <xAxis>
                 <CategoryAxis side="BOTTOM" fx:id="x" />
             </xAxis>
