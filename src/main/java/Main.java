@@ -40,7 +40,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root,500,300);
         Scene scene2 = new Scene(root2,500,300);
-        Scene scene3 = new Scene(root3,500,300);
+        Scene scene3 = new Scene(root3,600,400);
 
         scene.getStylesheets().add("style.css");
         Stage stage = new Stage();

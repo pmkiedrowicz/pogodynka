@@ -45,7 +45,7 @@ public class LineChartControlerWithDates {
         LocalDate toDate = lastDate.getValue();
 
         SensorService sensorService = new SensorService();
-        List<Data> selectedDate = sensorService.getSelectedRecords();
+        List<Data> selectedDate = sensorService.getSelectedRecordsService(fromDate.toString(),toDate.toString());
 
             final CategoryAxis xAxis = new CategoryAxis();
             final NumberAxis yAxis = new NumberAxis();
