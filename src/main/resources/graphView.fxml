@@ -23,7 +23,7 @@
                 <Font name="Microsoft YaHei" size="24.0" />
             </font>
         </TextField>
-        <LineChart fx:id="LineChart" layoutY="42.0" prefHeight="167.0" prefWidth="500.0" style="-fx-background-color: rgba(0,0,0,0);">
+        <LineChart fx:id="LineChart" layoutY="42.0" prefHeight="167.0" prefWidth="500.0" style="-fx-background-color: rgba(0,0,0,0);" animated="false">
             <xAxis>
                 <CategoryAxis side="BOTTOM" fx:id="x" />
             </xAxis>
