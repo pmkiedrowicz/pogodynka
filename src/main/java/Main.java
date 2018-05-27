@@ -55,10 +55,10 @@ public class Main extends Application {
         stage.show();
         stage2.show();
 
-//        String database = "pogodynka";
-        //
+//       String database = "pogodynka";
 
-//
+
+
         port(8080);
         get("/sensor", (req, res) -> {
             String temperature = req.queryParams("temperature");
@@ -71,7 +71,7 @@ public class Main extends Application {
             String password = "kakashi6";
             String databaseTest = "pogodynka";
             String port ="3306";
-//
+
             DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
             DataDAOImpl dataDAO = new DataDAOImpl(login, password,port, databaseTest);
             System.out.println(dataDAO.getRecent7Days());
@@ -86,8 +86,7 @@ public class Main extends Application {
             dataDAO.insert(data);
             return "Data were put into database";
         });
-//
-//
+
         SensorService sensorService=new SensorService();
         sensorService.getRecent7DaysFrom12OClock().forEach(el-> System.out.println(el.toString()));
 
