@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class LineChartControlerWithDates {
@@ -43,7 +44,7 @@ public class LineChartControlerWithDates {
 
         LocalDate fromDate = firstDate.getValue();
         LocalDate toDate = lastDate.getValue();
-
+        DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         SensorService sensorService = new SensorService();
         List<Data> selectedDate = sensorService.getSelectedRecordsService(fromDate.toString(),toDate.toString());
 
@@ -59,7 +60,7 @@ public class LineChartControlerWithDates {
             series2.setName("Humi");
 
             for(int i=0;i<selectedDate.size()-1;i++){
-                String xValue = selectedDate.get(i).getDateTime().toString();
+                String xValue = selectedDate.get(i).getDateTime().format(dTF).toString();
                 series1.getData().add(new XYChart.Data(""+xValue, selectedDate.get(i).getTemperature()));
                 series2.getData().add(new XYChart.Data(""+xValue, selectedDate.get(i).getHumidity()));
             }
