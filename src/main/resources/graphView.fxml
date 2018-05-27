@@ -9,6 +9,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.LineChartControler">
@@ -18,9 +20,9 @@
                 <Image url="@cityscape.png" />
             </image>
         </ImageView>
-        <TextField alignment="CENTER" editable="false" layoutX="-9.0" layoutY="7.0" opacity="0.6" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Last week">
+        <TextField alignment="CENTER" editable="false" layoutX="-17.0" opacity="0.67" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Last week">
             <font>
-                <Font name="Microsoft YaHei" size="24.0" />
+                <Font name="Andalus" size="28.0" />
             </font>
         </TextField>
         <LineChart fx:id="LineChart" animated="false" layoutY="42.0" opacity="0.7" prefHeight="167.0" prefWidth="500.0" style="-fx-background-color: rgba(0,0,0,0);">
@@ -136,12 +138,20 @@
                 <Font name="Microsoft YaHei" size="8.0" />
             </font>
         </TextField>
-      <ButtonBar layoutX="287.0" layoutY="12.0" prefHeight="40.0" prefWidth="200.0">
+      <ButtonBar layoutX="276.0" layoutY="12.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
-          <Button fx:id="pobierzTemperatureRecent" mnemonicParsing="false" onAction="#onClick1" text="Pobierz temperaturę">
+          <Button fx:id="pobierzTemperatureRecent" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#onClick1" text="Pobierz temperaturę">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#e1820e" />
+                        <Stop color="#b20b0b" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </textFill></Button>
         </buttons>
       </ButtonBar>
     </children>

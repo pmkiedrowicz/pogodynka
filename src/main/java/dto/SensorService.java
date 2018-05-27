@@ -20,7 +20,7 @@ public class SensorService {
         List<Data> result = new ArrayList<>();
 
         LocalDate now = LocalDate.now();
-        for (int i = 7; i >= 0; i--) {
+        for (int i = 6; i >= 0; i--) {
             int then = now.minusDays(i).getDayOfMonth();
             for (int j = 0; j <= list.size() - 1; j++) {
                 if (list.get(j).getDateTime().getDayOfMonth() == then) {
