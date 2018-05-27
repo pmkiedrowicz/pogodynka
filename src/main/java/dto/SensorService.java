@@ -3,6 +3,7 @@ package dto;
 import dao.DataDAOImpl;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,10 @@ public class SensorService {
                     if (list.get(j).getDateTime().getHour() >= 12) {
                         result.add(list.get(j));
                         j = list.size() - 1;
+                        //jeśli nie będzie powyżej godziny 12, to doda pierwszą z tego dnia
+                    } else if (list.get(j).getDateTime().getHour() <= 12) {
+                        result.add(list.get(j));
+                        j = list.size() - 1;
                     }
                 }
             }
@@ -34,9 +39,33 @@ public class SensorService {
         return result;
     }
 
-    public Data getLast(){
+    public Data getLast() {
         Data result = dataDAO.getRecentRecord();
-        return  result;
+        return result;
+    }
+
+    public List<Data> getSelectedRecordsService(String from, String to) {
+        List<Data> selectedList = dataDAO.getSelectedRecords(from, to);
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.from(dateTimeFormatter.parse(to));
+        List<Data> result = new ArrayList<>();
+        for (int i = selectedList.size(); i >= 0; i--) {
+            int then = localDate.minusDays(i).getDayOfMonth();
+            for (int j = 0; j <= selectedList.size() - 1; j++) {
+                if (selectedList.get(j).getDateTime().getDayOfMonth() == then) {
+                    if (selectedList.get(j).getDateTime().getHour() >= 12) {
+                        result.add(selectedList.get(j));
+                        j = selectedList.size() - 1;
+                    } else if (selectedList.get(j).getDateTime().getHour() <= 12) {
+                        result.add(selectedList.get(j));
+                        j = selectedList.size() - 1;
+
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
 

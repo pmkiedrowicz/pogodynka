@@ -11,6 +11,8 @@ public interface DataDAO {
 
     Data getRecentRecord();
 
+    List<Data> getSelectedRecords(String from, String to);
+
     Integer insert(Data data);
 
     Boolean deleteRecords();

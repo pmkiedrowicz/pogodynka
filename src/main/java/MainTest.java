@@ -1,3 +1,5 @@
+import dao.DataDAOImpl;
+import dto.SensorService;
 import multicast.IntroduceService;
 
 import static spark.Spark.get;
@@ -7,11 +9,29 @@ import static spark.Spark.post;
 public class MainTest {
 
     public static void main(String[] args) {
-//        MulticastReceiver multicastReceiver = new MulticastReceiver();
+        String login = "root";
+        String password = "kakashi6";
+        String databaseTest = "pogodynka";
+        String port ="3306";
+
+        DataDAOImpl dataDAO=new DataDAOImpl(login,password,port,databaseTest);
+
+        String from = "2018-05-22";
+        String to ="2018-05-24";
+
+        System.out.println(dataDAO.getSelectedRecords(from,to));
+
+        System.out.println(dataDAO.getRecentRecord());
+
+        SensorService sensorService=new SensorService();
+
+        System.out.println("wadaW"+sensorService.getSelectedRecordsService(from,to));
+
+        //        MulticastReceiver multicastReceiver = new MulticastReceiver();
 //        multicastReceiver.run();
 
-        IntroduceService introduceService=new IntroduceService();
-        introduceService.run();
+//        IntroduceService introduceService=new IntroduceService();
+//        introduceService.run();
 
 //        MulticastPublisher multicastPublisher=new MulticastPublisher();
 //        try {

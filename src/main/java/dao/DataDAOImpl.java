@@ -30,6 +30,7 @@ public class DataDAOImpl implements DataDAO {
         this.login = login;
         this.password = password;
         connectionString = String.format(connectionString, port, database);
+
     }
 
     @Override
@@ -101,7 +102,37 @@ public class DataDAOImpl implements DataDAO {
                                     .humidity(resultSet.getDouble("humidity"))
                                     .dateTime(resultSet.getTimestamp(DATE).toLocalDateTime())
                                     .build();
-                            result=data;
+                            result = data;
+                        }
+                    }
+                }
+                con.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public List<Data> getSelectedRecords(String from, String to) {
+    String selectQuery="select * from data where DateTime>=\"%s\" and DateTime <=\"%s 23:59:59:999\"";
+    String selectRecords=String.format(selectQuery,from,to);
+    //where DateTime>=\"%s\" and DateTime<=\"%s\" 23:59:59:999"
+        List<Data> result = new ArrayList<>();
+        try {
+            try (Connection con = DriverManager.getConnection(connectionString, login, password)) {
+                try (Statement statement = con.createStatement()) {
+                    String tableSql = selectRecords;
+                    try (ResultSet resultSet = statement.executeQuery(tableSql)) {
+                        while (resultSet.next()) {
+                            Data data = Data.builder()
+                                    .id(resultSet.getInt("id"))
+                                    .temperature(resultSet.getDouble("temperature"))
+                                    .humidity(resultSet.getDouble("humidity"))
+                                    .dateTime(resultSet.getTimestamp(DATE).toLocalDateTime())
+                                    .build();
+                            result.add(data);
                         }
                     }
                 }
