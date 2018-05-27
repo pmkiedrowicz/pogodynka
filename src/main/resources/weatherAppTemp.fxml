@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.WeatherAppControler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-radius: 30; -fx-background-color: #cceeff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.WeatherAppControler">
    <children>
-      <ImageView fitHeight="346.0" fitWidth="300.0" layoutX="3.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.49;">
+      <ImageView fitHeight="346.0" fitWidth="300.0" layoutX="3.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
          <image>
             <Image url="@cityscape.png" />
          </image>
@@ -27,7 +27,7 @@
       </TextField>
       <TextField alignment="CENTER" editable="false" layoutX="-9.0" layoutY="7.0" opacity="0.4" style="-fx-background-color: rgba(0,0,0,0); -fx-text-inner-color: #DC143C;" text="Bydgoszcz, PL">
          <font>
-            <Font name="Microsoft YaHei" size="24.0" />
+            <Font name="Tahoma" size="24.0" />
          </font>
       </TextField>
       <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="303.0" layoutY="130.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
