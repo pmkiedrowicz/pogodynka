@@ -13,9 +13,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.LineChartControler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="507.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.LineChartControler">
     <children>
-        <ImageView fitHeight="287.0" fitWidth="490.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.3;">
+        <ImageView fitHeight="287.0" fitWidth="490.0" layoutX="2.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
             <image>
                 <Image url="@cityscape.png" />
             </image>

@@ -53,8 +53,11 @@ public class LineChartControler {
 		SensorService sensorService = new SensorService();
 		List<Data> last7Days = sensorService.getRecent7DaysFrom12OClock();
 		if (last7Days.size() < 7) {
+
 			LineChart.setTitle("Brak danych");
+			LineChart.getData().clear();
 		} else {
+			LineChart.setTitle(null);
 			temp_6.setText(Double.toString(last7Days.get(0).getTemperature()));
 			temp_5.setText(Double.toString(last7Days.get(1).getTemperature()));
 			temp_4.setText(Double.toString(last7Days.get(2).getTemperature()));

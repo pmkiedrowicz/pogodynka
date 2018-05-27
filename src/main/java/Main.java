@@ -33,27 +33,35 @@ public class Main extends Application {
         DataDAOImpl dataDAOImp = new DataDAOImpl(AppSettings.login ,AppSettings.password,AppSettings.port,AppSettings.database);
 
         Parent root = FXMLLoader.load(getClass().getResource("/graphView.fxml"));
+        Parent root3 = FXMLLoader.load(getClass().getResource("/graphViewWithDates.fxml"));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/weatherAppTemp.fxml"));
         Parent root2 = loader.load();
 
         Scene scene = new Scene(root,500,300);
         Scene scene2 = new Scene(root2,500,300);
+        Scene scene3 = new Scene(root3,500,300);
 
         scene.getStylesheets().add("style.css");
         Stage stage = new Stage();
         Stage stage2 = new Stage();
+        Stage stage3 = new Stage();
+
 
         stage.setTitle("Wykres");
         stage.setScene(scene);
         stage2.setTitle("Pogodynka");
         stage2.setScene(scene2);
+        stage3.setTitle("Daty");
+        stage3.setScene(scene3);
+
         WeatherAppControler controler = loader.<WeatherAppControler>getController();
         TemperatureWatcher temperatureWatcher = new TemperatureWatcher(dataDAOImp,controler);
         temperatureWatcher.start();
 
         stage.show();
         stage2.show();
+        stage3.show();
 
 //       String database = "pogodynka";
 
