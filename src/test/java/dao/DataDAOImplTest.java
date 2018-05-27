@@ -40,7 +40,7 @@ public class DataDAOImplTest {
     @Test
     public void ShouldCheckIfInsertAddsCorrectRecordToDatabase() {
         dataDAO.insert(data);
-        Assert.assertEquals(expected, dataDAO.getRecentRecord());
+        Assert.assertEquals(data, dataDAO.getRecentRecord());
     }
 
     @Test
