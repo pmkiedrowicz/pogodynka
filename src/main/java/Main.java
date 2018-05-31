@@ -51,10 +51,9 @@ public class Main extends Application {
         WeatherAppControler controler = loader.<WeatherAppControler>getController();
         TemperatureWatcher temperatureWatcher = new TemperatureWatcher(dataDAOImp, controler);
         temperatureWatcher.start();
-//
+
 //        stage.show();
 //        stage2.show();
 //        stage3.show();
-
     }
 }

@@ -12,7 +12,7 @@ import static spark.Spark.port;
 import static spark.Spark.post;
 
 public class GetPost {
-    final static Logger logger=Logger.getLogger(GetPost.class.toString());
+    final static Logger logger = Logger.getLogger(GetPost.class.toString());
     DataDAOImpl dataDAO = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
     //Adds DateTime pattern-format, except this theres issue with miliseconds input/output database
     DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
@@ -31,13 +31,13 @@ public class GetPost {
             String temperature = request.queryParams("temperature");
             String humidity = request.queryParams("humidity");
             ValueCheck valueCheck = new ValueCheck();
-            if (valueCheck.isDouble(temperature, humidity) == true) {
+            if (valueCheck.isDouble(temperature, humidity) == true && valueCheck.isHumiInRange(humidity)) {
                 Double temp = Double.parseDouble(temperature);
                 Double humi = Double.parseDouble(humidity);
                 Data data = new Data(temp, humi, currentlyDate);
                 dataDAO.insert(data);
             } else {
-                logger.warn("Data were not put into database, temperature: "+temperature+" and humidity: "+humidity);
+                logger.warn("Data were not put into database, temperature: " + temperature + " and humidity: " + humidity);
                 return "Data were not put into database";
             }
             return "Data were put into database";
