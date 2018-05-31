@@ -30,7 +30,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        DataDAOImpl dataDAOImp = new DataDAOImpl(AppSettings.login ,AppSettings.password,AppSettings.port,AppSettings.database);
+        DataDAOImpl dataDAOImp = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
 
         Parent root = FXMLLoader.load(getClass().getResource("/graphView.fxml"));
         Parent root3 = FXMLLoader.load(getClass().getResource("/graphViewWithDates.fxml"));
@@ -38,9 +38,9 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/weatherAppTemp.fxml"));
         Parent root2 = loader.load();
 
-        Scene scene = new Scene(root,500,300);
-        Scene scene2 = new Scene(root2,500,300);
-        Scene scene3 = new Scene(root3,600,400);
+        Scene scene = new Scene(root, 500, 300);
+        Scene scene2 = new Scene(root2, 500, 300);
+        Scene scene3 = new Scene(root3, 600, 400);
 
         scene.getStylesheets().add("style.css");
         Stage stage = new Stage();
@@ -56,7 +56,7 @@ public class Main extends Application {
         stage3.setScene(scene3);
 
         WeatherAppControler controler = loader.<WeatherAppControler>getController();
-        TemperatureWatcher temperatureWatcher = new TemperatureWatcher(dataDAOImp,controler);
+        TemperatureWatcher temperatureWatcher = new TemperatureWatcher(dataDAOImp, controler);
         temperatureWatcher.start();
 
         stage.show();
@@ -64,7 +64,6 @@ public class Main extends Application {
         stage3.show();
 
 //       String database = "pogodynka";
-
 
 
         port(8080);
@@ -75,13 +74,13 @@ public class Main extends Application {
         });
 //         http://localhost:8080/sensor?temperature=22.4&humidity=33
         post("/sensor", (request, response) -> {
-            String login = "root";
-            String password = "kakashi6";
-            String databaseTest = "pogodynka";
-            String port ="3306";
+            String login = AppSettings.login;
+            String password = AppSettings.password;
+            String databaseTest = AppSettings.database;
+            String port = AppSettings.port;
 
             DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-            DataDAOImpl dataDAO = new DataDAOImpl(login, password,port, databaseTest);
+            DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, databaseTest);
             System.out.println(dataDAO.getRecent7Days());
             LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
 
@@ -95,8 +94,8 @@ public class Main extends Application {
             return "Data were put into database";
         });
 
-        SensorService sensorService=new SensorService();
-        sensorService.getRecent7DaysFrom12OClock().forEach(el-> System.out.println(el.toString()));
+//        SensorService sensorService = new SensorService();
+//        sensorService.getRecent7DaysFrom12OClock().forEach(el -> System.out.println(el.toString()));
 
 
 //        System.out.println(" 222");

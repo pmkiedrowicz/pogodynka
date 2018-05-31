@@ -1,6 +1,7 @@
 import dao.DataDAOImpl;
 import dto.SensorService;
 import multicast.IntroduceService;
+import settings.AppSettings;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -9,23 +10,23 @@ import static spark.Spark.post;
 public class MainTest {
 
     public static void main(String[] args) {
-        String login = "root";
-        String password = "kakashi6";
-        String databaseTest = "pogodynka";
-        String port ="3306";
+        String login = AppSettings.login;
+        String password = AppSettings.password;
+        String databaseTest = AppSettings.database;
+        String port = AppSettings.port;
 
-        DataDAOImpl dataDAO=new DataDAOImpl(login,password,port,databaseTest);
+        DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, databaseTest);
 
         String from = "2018-05-22";
-        String to ="2018-05-24";
+        String to = "2018-05-24";
 
-        System.out.println(dataDAO.getSelectedRecords(from,to));
+        System.out.println(dataDAO.getSelectedRecords(from, to));
 
         System.out.println(dataDAO.getRecentRecord());
 
-        SensorService sensorService=new SensorService();
+        SensorService sensorService = new SensorService();
 
-        System.out.println("wadaW"+sensorService.getSelectedRecordsService(from,to));
+        System.out.println("wadaW" + sensorService.getSelectedRecordsService(from, to));
 
         //        MulticastReceiver multicastReceiver = new MulticastReceiver();
 //        multicastReceiver.run();
@@ -40,7 +41,7 @@ public class MainTest {
 //            e.printStackTrace();
 //        }
 
-      //  multicastReceiver.start();
+        //  multicastReceiver.start();
 
 //        String database = "pogodynka";
 //        String databaseTest = "pogodynkaTest";

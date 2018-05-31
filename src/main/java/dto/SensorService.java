@@ -1,6 +1,7 @@
 package dto;
 
 import dao.DataDAOImpl;
+import settings.AppSettings;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,10 +10,10 @@ import java.util.List;
 
 public class SensorService {
 
-    String login = "root";
-    String password = "kakashi6";
-    String database = "pogodynka";
-    String port = "3306";
+    String login = AppSettings.login;
+    String password = AppSettings.password;
+    String database = AppSettings.database;
+    String port = AppSettings.port;
     DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, database);
 
     List<Data> list = dataDAO.getRecent7Days();

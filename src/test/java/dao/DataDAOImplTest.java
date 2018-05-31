@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataDAOImplTest {
-    String login = "root";
-    String password = "kakashi6";
-    String database = "pogodynkaTest";
-    String port ="3306";
-    DataDAOImpl dataDAO = new DataDAOImpl(login, password,port, database);
+    String login = AppSettings.login;
+    String password = AppSettings.password;
+    String database = AppSettings.database;
+    String port = AppSettings.port;
+    DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, database);
 
-    String dateOne ="2018-03-20T20:20:16";
-    String dateTwo ="2018-01-20T13:13:16";
+    String dateOne = "2018-03-20T20:20:16";
+    String dateTwo = "2018-01-20T13:13:16";
 
 
     DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
@@ -33,9 +33,10 @@ public class DataDAOImplTest {
     Data data8 = new Data(31, 59, currentlyDate);
 
     List<Data> expected = new ArrayList<>();
-   public DataDAOImplTest(){
-       expected.add(data);
-   }
+
+    public DataDAOImplTest() {
+        expected.add(data);
+    }
 
     @Test
     public void ShouldCheckIfInsertAddsCorrectRecordToDatabase() {
@@ -50,7 +51,7 @@ public class DataDAOImplTest {
         dataDAO.insert(data2);
         expected.add(data2);
 
-        List<Data> result = new DataDAOImpl(login, password,port, database).getAll();
+        List<Data> result = new DataDAOImpl(login, password, port, database).getAll();
         Assert.assertEquals(expected, result);
     }
 
@@ -73,7 +74,7 @@ public class DataDAOImplTest {
         expected7days.add(data6);
         expected7days.add(data8);
 
-        List<Data> result = new DataDAOImpl(login, password,port, database).getRecent7Days();
+        List<Data> result = new DataDAOImpl(login, password, port, database).getRecent7Days();
         Assert.assertEquals(expected7days, result);
     }
 
@@ -86,7 +87,7 @@ public class DataDAOImplTest {
         dataDAO.insert(data4);
 //        List<Data> expectedLast = new ArrayList<>();
 //        expectedLast.add(data4);
-        Data result = new DataDAOImpl(AppSettings.login ,AppSettings.password,AppSettings.port,database   ).getRecentRecord();
+        Data result = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, database).getRecentRecord();
         Assert.assertEquals(data4, result);
     }
 
@@ -99,6 +100,6 @@ public class DataDAOImplTest {
         dataDAO.deleteRecords();
         Assert.assertTrue(dataDAO.deleteRecords());
         List<Data> expectedEmpty = new ArrayList<>();
-        Assert.assertEquals(expectedEmpty,dataDAO.getAll());
+        Assert.assertEquals(expectedEmpty, dataDAO.getAll());
     }
 }
