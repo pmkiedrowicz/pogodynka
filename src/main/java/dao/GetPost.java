@@ -37,7 +37,7 @@ public class GetPost {
                 Data data = new Data(temp, humi, currentlyDate);
                 dataDAO.insert(data);
             } else {
-                logger.warn("Data were not put into database, temperature: " + temperature + " and humidity: " + humidity);
+                logger.error("Data were not put into database, temperature: " + temperature + ", humidity: " + humidity);
                 return "Data were not put into database";
             }
             return "Data were put into database";
