@@ -1,9 +1,8 @@
 package dto;
 
+import dao.ValueCheck;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class ValueCheckTest {
     ValueCheck valueCheck = new ValueCheck();

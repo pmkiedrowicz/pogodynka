@@ -77,6 +77,16 @@ public class MainTest {
 //        Boolean result3 = new DataDAOImpl(login, password, databaseTest).deleteRecords();
 //        System.out.println(result3);
 
+//        SensorService sensorService = new SensorService();
+//        sensorService.getRecent7DaysFrom12OClock().forEach(el -> System.out.println(el.toString()));
+
+
+//        System.out.println(" 222");
+//        sensorService.getRecent7DaysFrom12OClock2().forEach(el-> System.out.println(el.toString()));
+//
+//        LocalDate now = LocalDate.now();
+//        int then = now.minusDays(7).getDayOfMonth();
+//        System.out.println(then);
 
     }
 }
