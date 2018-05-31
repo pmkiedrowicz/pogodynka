@@ -12,7 +12,7 @@ import static spark.Spark.port;
 import static spark.Spark.post;
 
 public class GetPost {
-    final static Logger logger=Logger.getLogger(GetPost.class.getName());
+    final static Logger logger=Logger.getLogger(GetPost.class.toString());
     DataDAOImpl dataDAO = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
     //Adds DateTime pattern-format, except this theres issue with miliseconds input/output database
     DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
