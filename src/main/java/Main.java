@@ -9,11 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.extern.log4j.Log4j;
 import settings.AppSettings;
 import threads.TemperatureWatcher;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Logger;
 
 import static spark.Spark.delete;
 import static spark.Spark.get;
@@ -21,15 +23,14 @@ import static spark.Spark.port;
 import static spark.Spark.post;
 
 public class Main extends Application {
+    //main method
     public static void main(String[] args) {
-
-
         Application.launch(Main.class, args);
-
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Logger logger = Logger.getLogger("Logger");
 
         DataDAOImpl dataDAOImp = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
 
@@ -72,20 +73,19 @@ public class Main extends Application {
         post("/sensor", (request, response) -> {
             DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
             DataDAOImpl dataDAO = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
-            System.out.println(dataDAO.getRecent7Days());
+//            System.out.println(dataDAO.getRecent7Days());
             LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
-
-            //need to add IF statement to check if its not send "nan" String (makes error)
-            //java.lang.NumberFormatException: empty String
-            //	at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1842)
             String temperature = request.queryParams("temperature");
             String humidity = request.queryParams("humidity");
             ValueCheck valueCheck = new ValueCheck();
-            if (valueCheck.isDouble(temperature,humidity) == true) {
+            if (valueCheck.isDouble(temperature, humidity) == true) {
                 Double temp = Double.parseDouble(temperature);
                 Double humi = Double.parseDouble(humidity);
                 Data data = new Data(temp, humi, currentlyDate);
                 dataDAO.insert(data);
+            logger.info("Data were put into database in format: "+data);
+            } else {
+                logger.info("Data were not put into database");
             }
             return "Data were put into database";
         });

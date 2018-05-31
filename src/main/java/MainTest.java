@@ -12,7 +12,7 @@ public class MainTest {
     public static void main(String[] args) {
         String login = AppSettings.login;
         String password = AppSettings.password;
-        String databaseTest = AppSettings.database;
+        String databaseTest = "pogodynkaTest";
         String port = AppSettings.port;
 
         DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, databaseTest);
