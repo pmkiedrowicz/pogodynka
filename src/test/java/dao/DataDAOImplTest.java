@@ -13,7 +13,7 @@ import java.util.List;
 public class DataDAOImplTest {
     String login = AppSettings.login;
     String password = AppSettings.password;
-    String database = AppSettings.database;
+    String database = "pogodynkaTest";
     String port = AppSettings.port;
     DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, database);
 
