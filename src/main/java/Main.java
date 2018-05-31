@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.log4j.BasicConfigurator;
 import settings.AppSettings;
 import threads.TemperatureWatcher;
 
@@ -13,6 +14,7 @@ public class Main extends Application {
     //main method
     public static void main(String[] args) {
         Application.launch(Main.class, args);
+        BasicConfigurator.configure();
     }
 
     @Override
@@ -49,10 +51,10 @@ public class Main extends Application {
         WeatherAppControler controler = loader.<WeatherAppControler>getController();
         TemperatureWatcher temperatureWatcher = new TemperatureWatcher(dataDAOImp, controler);
         temperatureWatcher.start();
-
-        stage.show();
-        stage2.show();
-        stage3.show();
+//
+//        stage.show();
+//        stage2.show();
+//        stage3.show();
 
     }
 }

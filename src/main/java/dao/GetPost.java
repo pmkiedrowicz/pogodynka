@@ -1,18 +1,18 @@
 package dao;
 
 import dto.Data;
+import org.apache.log4j.Logger;
 import settings.AppSettings;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Logger;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 
 public class GetPost {
-    Logger logger = Logger.getLogger("Logger");
+    final static Logger logger=Logger.getLogger(GetPost.class.getName());
     DataDAOImpl dataDAO = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
     //Adds DateTime pattern-format, except this theres issue with miliseconds input/output database
     DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
@@ -36,9 +36,8 @@ public class GetPost {
                 Double humi = Double.parseDouble(humidity);
                 Data data = new Data(temp, humi, currentlyDate);
                 dataDAO.insert(data);
-                logger.info("Data were put into database in format: " + data);
             } else {
-                logger.info("Data were not put into database");
+                logger.warn("Data were not put into database, temperature: "+temperature+" and humidity: "+humidity);
                 return "Data were not put into database";
             }
             return "Data were put into database";
