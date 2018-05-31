@@ -1,8 +1,6 @@
 import controlers.WeatherAppControler;
 import dao.DataDAOImpl;
 import dao.GetPost;
-import dto.Data;
-import dao.ValueCheck;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,13 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import settings.AppSettings;
 import threads.TemperatureWatcher;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import static spark.Spark.get;
-import static spark.Spark.port;
-import static spark.Spark.post;
 
 public class Main extends Application {
     //main method
@@ -26,6 +17,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        //Execute GetPost HTTP requests
+        GetPost getPost = new GetPost();
+        getPost.sensorData();
 
         DataDAOImpl dataDAOImp = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
 
@@ -59,7 +54,5 @@ public class Main extends Application {
         stage2.show();
         stage3.show();
 
-        GetPost getPost = new GetPost();
-        getPost.sensorData();
     }
 }
