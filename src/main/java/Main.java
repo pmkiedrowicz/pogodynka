@@ -3,6 +3,7 @@ import dao.DataDAO;
 import dao.DataDAOImpl;
 import dto.Data;
 import dto.SensorService;
+import dto.ValueCheck;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,7 +48,6 @@ public class Main extends Application {
         Stage stage2 = new Stage();
         Stage stage3 = new Stage();
 
-
         stage.setTitle("Wykres");
         stage.setScene(scene);
         stage2.setTitle("Pogodynka");
@@ -63,34 +63,30 @@ public class Main extends Application {
         stage2.show();
         stage3.show();
 
-//       String database = "pogodynka";
-
-
         port(8080);
         get("/sensor", (req, res) -> {
             String temperature = req.queryParams("temperature");
             String humidity = req.queryParams("humidity");
             return "Podana temperatura=" + temperature + ", wilgotność=" + humidity;
         });
-//         http://localhost:8080/sensor?temperature=22.4&humidity=33
         post("/sensor", (request, response) -> {
-            String login = AppSettings.login;
-            String password = AppSettings.password;
-            String databaseTest = AppSettings.database;
-            String port = AppSettings.port;
-
             DateTimeFormatter dTF = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-            DataDAOImpl dataDAO = new DataDAOImpl(login, password, port, databaseTest);
+            DataDAOImpl dataDAO = new DataDAOImpl(AppSettings.login, AppSettings.password, AppSettings.port, AppSettings.database);
             System.out.println(dataDAO.getRecent7Days());
             LocalDateTime currentlyDate = LocalDateTime.parse(LocalDateTime.now().format(dTF));
 
-            //need to add IF statement to check if its not send empty String (makes error)
+            //need to add IF statement to check if its not send "nan" String (makes error)
             //java.lang.NumberFormatException: empty String
             //	at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1842)
-            Double temperature = Double.valueOf(request.queryParams("temperature"));
-            Double humidity = Double.valueOf(request.queryParams("humidity"));
-            Data data = new Data(temperature, humidity, currentlyDate);
-            dataDAO.insert(data);
+            String temperature = request.queryParams("temperature");
+            String humidity = request.queryParams("humidity");
+            ValueCheck valueCheck = new ValueCheck();
+            if (valueCheck.isDouble(temperature,humidity) == true) {
+                Double temp = Double.parseDouble(temperature);
+                Double humi = Double.parseDouble(humidity);
+                Data data = new Data(temp, humi, currentlyDate);
+                dataDAO.insert(data);
+            }
             return "Data were put into database";
         });
 
